@@ -34,3 +34,10 @@ app.get('/metrics', (req, res) => {
   res.set('Content-Type', register.contentType);
   res.end(register.metrics());
 });
+
+const PORT = 8080;
+
+app.listen(PORT,() => {
+  console.log(`webpaged running at port ${PORT}`)
+});
+
