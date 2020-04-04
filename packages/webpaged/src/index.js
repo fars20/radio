@@ -19,3 +19,18 @@ const opts = {
 launchChromeAndRunLighthouse('https://example.com', opts).then(results => {
   collectBrowserSpeedMetrics(results);
 });
+
+const express = require('express');
+const app = express();
+
+const client = require('prom-client');
+
+const collectDefaultMetrics = client.collectDefaultMetrics;
+const Registry = client.Registry;
+const register = new Registry();
+collectDefaultMetrics({ register });
+
+app.get('/metrics', (req, res) => {
+  res.set('Content-Type', register.contentType);
+  res.end(register.metrics());
+});
