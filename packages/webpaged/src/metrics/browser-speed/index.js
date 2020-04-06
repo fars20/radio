@@ -3,19 +3,22 @@ const { collectTTFB } = require('./ttfb/collector');
 const { collectFMP } = require('./fmp/collector');
 const { collectFCP } = require('./fcp/collector');
 
-// const client = require('prom-client');
+ const client = require('prom-client');
 //
-// const gauge = new client.Gauge({
-//   name: 'browser_speed_lab',
-//   help: 'lab browser metrics',
-//   labelNames: ['TTI', 'TTFB','FMP','FCP'],
-// });
+let gauge = null;
 
-const collectBrowserSpeedMetrics = ({results}) => {
-  // collectTTI(results,gauge);
-  // collectTTFB(results,gauge);
-  // collectFMP(results,gauge);
-  // collectFCP(results,gauge);
+const collectBrowserSpeedMetrics = ({results,client}) => {
+  if(gauge === null) {
+    gauge = new client.Gauge({
+      name: 'browser_speed_lab',
+      help: 'lab browser metrics',
+      labelNames: ['timeing'],
+    });
+  }
+  collectTTI(results,gauge);
+  collectTTFB(results,gauge);
+  collectFMP(results,gauge);
+  collectFCP(results,gauge);
 };
 
 
