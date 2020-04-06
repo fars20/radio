@@ -13,7 +13,7 @@ function launchChromeAndRunLighthouse(url, opts, config = null) {
 }
 
 const opts = {
-  chromeFlags: ['--show-paint-rects']
+  chromeFlags: ['--no-sandbox','--headless']
 };
 
 launchChromeAndRunLighthouse('https://example.com', opts).then(results => {
@@ -35,9 +35,8 @@ app.get('/metrics', (req, res) => {
   res.end(register.metrics());
 });
 
-const PORT = 8080;
+const PORT = 5050;
 
-app.listen(PORT,() => {
+app.listen(PORT,'0.0.0.0',() => {
   console.log(`webpaged running at port ${PORT}`)
 });
-

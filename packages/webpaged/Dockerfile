@@ -1,19 +1,6 @@
-FROM justinribeiro/chrome-headless
+FROM justinribeiro/lighthouse:latest
 
-USER root
-
-RUN apt update -y
-
-RUN apt install curl -y
-
-RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
-
-RUN apt install nodejs -y
-
-RUN node --version
-
-RUN apt install npm -y
-
+USER  root
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -29,6 +16,6 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+EXPOSE 5050
 
 CMD [ "node", "./src/index.js" ]
