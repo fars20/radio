@@ -1,6 +1,10 @@
-const parseTTFB = () => {
+const parseTTFB = (results) => {
   return {
     name: 'TTI',
-    value: 2
+    value: results.audits['time-to-first-byte']['numericValue']
   };
+};
+
+module.exports = {
+  parseTTFB
 };

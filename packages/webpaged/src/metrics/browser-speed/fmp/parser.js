@@ -1,6 +1,10 @@
-const parseFMP = () => {
+const parseFMP = (results) => {
   return {
     name: 'TTI',
-    value: 2
+    value: results.audits['first-meaningful-paint']['numericValue']
   };
+};
+
+module.exports = {
+  parseFMP
 };

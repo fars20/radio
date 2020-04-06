@@ -1,6 +1,10 @@
-const parseTTI = () => {
+const parseTTI = (results) => {
   return {
     name: 'TTI',
-    value: 2
+    value: results.audits['interactive']['numericValue']
   };
+};
+
+module.exports = {
+  parseTTI
 };

@@ -13,17 +13,20 @@ function launchChromeAndRunLighthouse(url, opts, config = null) {
 }
 
 const opts = {
-  chromeFlags: ['--no-sandbox','--headless']
+  chromeFlags: ['']
 };
 const client = require('prom-client');
+
 
 launchChromeAndRunLighthouse('https://example.com', opts).then(results => {
   collectBrowserSpeedMetrics({results,client});
 });
 
 setInterval(()=>{
-  collectBrowserSpeedMetrics({client});
-},1000);
+  launchChromeAndRunLighthouse('https://example.com', opts).then(results => {
+    collectBrowserSpeedMetrics({results,client});
+  });
+},60*1000);
 
 const express = require('express');
 const app = express();

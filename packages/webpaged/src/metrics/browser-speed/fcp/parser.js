@@ -1,6 +1,10 @@
-const parseFCP = () => {
+const parseFCP = (results) => {
   return {
     name: 'TTI',
-    value: 2
+    value: results.audits['first-meaningful-paint']['numericValue']
   };
+};
+
+module.exports = {
+  parseFCP
 };
