@@ -1,11 +1,7 @@
 # WebpageD
 
-> Is a  demon send web metrics to prometheus
+Webpaged is a webpage performace demon provides performace metrics and events to prvode understanding of the resource usage and performance characteristics of webpages. 
 
-## Usage
+## Support and Contrubution
 
-```
-const performanceLab = require('@radio/performance-lab');
-
-// TODO: DEMONSTRATE API
-```
+Contributions, questions, and comments are all welcomed and encouraged! 
