@@ -1,6 +1,6 @@
 # WebpageD
 
-Webpaged is a webpage performace demon provides performace metrics and events to prvode understanding of the resource usage and performance characteristics of webpages. 
+Webpaged is a webpage performace demon provides performace metrics and events to provide understanding of the resource usage and performance characteristics of webpages. 
 
 ## Support and Contrubution
 
