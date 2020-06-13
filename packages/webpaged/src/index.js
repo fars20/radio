@@ -8,29 +8,27 @@ function launchChromeAndRunLighthouse(url, opts, config = null) {
     opts.port = chrome.port;
     return lighthouse(url, opts, config).then(results => {
       return chrome.kill().then(() => results.lhr)
+    }).catch( error => {
+
     });
   });
 }
 
 const opts = {
-  chromeFlags: ['']
+  chromeFlags: ['--headless','--no-sandbox']
 };
 const client = require('prom-client');
-
-
-launchChromeAndRunLighthouse('https://example.com', opts).then(results => {
-  collectBrowserSpeedMetrics({results,client});
-});
 
 setInterval(()=>{
   launchChromeAndRunLighthouse('https://example.com', opts).then(results => {
     collectBrowserSpeedMetrics({results,client});
+  }).catch( error => {
+    
   });
-},60*1000);
+},1000);
 
 const express = require('express');
 const app = express();
-
 
 const collectDefaultMetrics = client.collectDefaultMetrics;
 
